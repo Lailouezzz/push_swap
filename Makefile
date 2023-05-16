@@ -6,7 +6,7 @@
 #    By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 23:28:51 by ale-boud          #+#    #+#              #
-#    Updated: 2023/05/16 10:51:04 by ale-boud         ###   ########.fr        #
+#    Updated: 2023/05/16 10:54:01 by ale-boud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,29 +28,22 @@ CC := gcc
 CWARN := all extra error
 CWARN := $(CWARN:%=-W%)
 
-CFLAGS := -c $(CWARN)
+CFLAGS := -c -g $(CWARN) -Ilibft
+
+# Linker
+
+LD := gcc
 
 # ---
 # Lib information
 # ---
 
-NAME := libft.a
+NAME := push_swap
+LIBFT := libft.a
 
-SRCS := ft_toupper.c ft_putchar_fd.c ft_isalnum.c ft_strlcpy.c ft_memset.c \
-	ft_calloc.c ft_strmapi.c ft_putendl_fd.c ft_strlcat.c ft_strchr.c \
-	ft_memmove.c ft_striteri.c ft_substr.c ft_putnbr_fd.c ft_strdup.c \
-	ft_strjoin.c ft_isdigit.c ft_strnstr.c ft_split.c ft_memcmp.c ft_isascii.c \
-	ft_strlen.c ft_strrchr.c ft_putstr_fd.c ft_itoa.c ft_memcpy.c ft_isalpha.c \
-	ft_strtrim.c ft_memchr.c ft_tolower.c ft_isprint.c ft_strncmp.c ft_bzero.c \
-	ft_atoi.c ft_printf/ft_printf_arg.c ft_printf/ft_printf_conv2.c \
-	ft_printf/ft_printf_itoa.c ft_printf/ft_printf.c \
-	ft_printf/ft_printf_conv.c ft_printf/ft_printf_minmaxabs.c \
-	ft_printf/ft_print_pad.c
-
+SRCS := push_swap.c push_swap_utils.c push_swap_ctx.c
 OBJS := $(SRCS:%.c=%.o)
-SRCS_BONUS := ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
-	ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
-	ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
+SRCS_BONUS := 
 OBJS_BONUS := $(SRCS_BONUS:%.c=%.o)
 
 # ---
@@ -59,17 +52,19 @@ OBJS_BONUS := $(SRCS_BONUS:%.c=%.o)
 
 # Build everything
 
-all: bonus
+all: $(NAME)
 
 # Mostly clean (clean everything without the end result)
 
 clean:
-	$(RM) $(OBJS) $(OBJS_BONUS)
+	$(RM) $(OBJS) $(OBJS_BONUS) $(LIBFT)
+	$(MAKE) clean -C libft
 
 # Clean everything
 
 fclean: clean
 	$(RM) $(NAME)
+	$(MAKE) fclean -C libft
 
 # Rebuild
 
@@ -77,8 +72,7 @@ re: fclean all
 
 # Bonus
 
-bonus: $(OBJS) $(OBJS_BONUS)
-	ar rcs $(NAME) $^
+bonus: all
 	
 .PHONY: all clean fclean re bonus
 
@@ -86,8 +80,14 @@ bonus: $(OBJS) $(OBJS_BONUS)
 # Build targets
 # ---
 
-$(NAME): $(OBJS)
-	ar rcs $@ $^
+libft/libft.a:
+	$(MAKE) -C libft
+
+$(LIBFT): libft/libft.a
+	cp libft/libft.a $(LIBFT)
+
+$(NAME): $(OBJS) $(LIBFT)
+	$(LD) -o $@ $^
 
 %.o: %.c
 	$(CC) $(CFLAGS) -I. -o $@ $<
