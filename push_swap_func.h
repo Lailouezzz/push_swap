@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_func.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 10:11:46 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/05/16 15:19:59 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/05/16 12:46:16 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/05/16 12:49:06 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "push_swap.h"
+#ifndef  PUSH_SWAP_FUNC_H
+# define PUSH_SWAP_FUNC_H
 
-static int	error(void)
-{
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	return (EXIT_FAILURE);
-}
+# include "push_swap.h"
 
-int	main(int argc, char **argv)
-{
-	t_ps_ctx	ctx;
+void	ps_sa(t_ps_ctx *ctx);
+void	ps_sb(t_ps_ctx *ctx);
+void	ps_ss(t_ps_ctx *ctx);
+void	ps_pa(t_ps_ctx *ctx);
+void	ps_pb(t_ps_ctx *ctx);
+void	ps_ra(t_ps_ctx *ctx);
+void	ps_rb(t_ps_ctx *ctx);
+void	ps_rr(t_ps_ctx *ctx);
+void	ps_rra(t_ps_ctx *ctx);
+void	ps_rrb(t_ps_ctx *ctx);
+void	ps_rrr(t_ps_ctx *ctx);
 
-	if (argc == 1)
-		return (EXIT_SUCCESS);
-	ctx = ps_init_ctx(argv + 1, argc - 1);
-	if (ctx.a == NULL)
-		return (error());
-	ps_sort(&ctx);
-	ft_lstclear(&ctx.a, free);
-	return (EXIT_SUCCESS);
-}
+#endif

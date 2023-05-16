@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_sort.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 10:11:46 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/05/16 15:19:59 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/05/16 13:47:26 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/05/16 15:22:02 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "push_swap.h"
+#include "push_swap_func.h"
+#include "push_swap_utils.h"
 
-static int	error(void)
+void	ps_sort(t_ps_ctx *ctx)
 {
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	return (EXIT_FAILURE);
-}
+	t_list	*top;
 
-int	main(int argc, char **argv)
-{
-	t_ps_ctx	ctx;
-
-	if (argc == 1)
-		return (EXIT_SUCCESS);
-	ctx = ps_init_ctx(argv + 1, argc - 1);
-	if (ctx.a == NULL)
-		return (error());
-	ps_sort(&ctx);
-	ft_lstclear(&ctx.a, free);
-	return (EXIT_SUCCESS);
+	while (ft_lstsize(ctx->a) != 0)
+	{
+		top = ctx->a;
+		while (ft_lstsize(ctx->b) != 0 && ps_lstcmp(ctx->b, top) > 0)
+			ps_pa(ctx);
+		ps_pb(ctx);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 10:22:04 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/05/16 11:30:16 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:44:08 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,9 @@ int	ft_atoip_error(const char **str, int *nb)
 		return (0);
 	*nb = (int)nbr * sign;
 	return (1);
+}
+
+int	ps_lstcmp(t_list *a, t_list *b)
+{
+	return (*((int *)a->content) - *((int *)b->content));
 }
