@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:47:26 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/05/17 11:48:11 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/05/17 11:55:12 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static void	ps_sort_end(t_ps_ctx *ctx)
 		ps_pa(ctx);
 }
 
-static void	ps_sort_quick(t_ps_ctx *ctx)
+static void	ps_sort_quick(t_ps_ctx *ctx, int time)
 {
 	int	pivot;
 	int	k;
@@ -100,7 +100,7 @@ static void	ps_sort_quick(t_ps_ctx *ctx)
 	k = 1;
 	while (ft_lstsize(ctx->a) != 0)
 	{
-		pivot = min + ((max - min) / 10) * k;
+		pivot = min + ((max - min) / time) * k;
 		ps_sort_pivot(ctx, pivot);
 		++k;
 	}
@@ -111,6 +111,10 @@ void	ps_sort(t_ps_ctx *ctx)
 {
 	if (ft_lstsize(ctx->a) <= 10)
 		ps_sort_brute(ctx);
+	else if (ft_lstsize(ctx->a) < 100)
+		ps_sort_quick(ctx, 6);
+	else if (ft_lstsize(ctx->a) < 250)
+		ps_sort_quick(ctx, 8);
 	else
-		ps_sort_quick(ctx);
+		ps_sort_quick(ctx, 15);
 }
