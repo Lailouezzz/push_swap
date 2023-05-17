@@ -6,7 +6,7 @@
 #    By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 23:28:51 by ale-boud          #+#    #+#              #
-#    Updated: 2023/05/16 15:20:13 by ale-boud         ###   ########.fr        #
+#    Updated: 2023/05/17 10:51:43 by ale-boud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,8 +41,9 @@ LD := gcc
 NAME := push_swap
 LIBFT := libft.a
 
-SRCS := push_swap.c push_swap_utils.c push_swap_ctx.c push_swap_func1.c \
-		push_swap_func2.c push_swap_func3.c push_swap_sort.c
+SRCS := push_swap.c push_swap_utils1.c push_swap_ctx.c push_swap_func1.c \
+		push_swap_func2.c push_swap_func3.c push_swap_sort.c \
+		push_swap_utils2.c
 OBJS := $(SRCS:%.c=%.o)
 SRCS_BONUS := 
 OBJS_BONUS := $(SRCS_BONUS:%.c=%.o)

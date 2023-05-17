@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils.c                                  :+:      :+:    :+:   */
+/*   push_swap_utils1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 10:22:04 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/05/16 13:44:08 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/05/17 10:51:17 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <limits.h>
 #include "libft.h"
 #include "push_swap_utils.h"
 
@@ -74,4 +75,43 @@ int	ft_atoip_error(const char **str, int *nb)
 int	ps_lstcmp(t_list *a, t_list *b)
 {
 	return (*((int *)a->content) - *((int *)b->content));
+}
+
+int	ps_where_min(t_list *l)
+{
+	int		k;
+	int		minidx;
+	t_list	*min;
+
+	minidx = 0;
+	min = l;
+	k = 0;
+	while (l != NULL)
+	{
+		if (ps_lstcmp(l, min) < 0)
+		{
+			minidx = k;
+			min = l;
+		}
+		++k;
+		l = l->next;
+	}
+	return (minidx);
+}
+
+int	ps_min(t_list *l)
+{
+	int	min;
+
+	if (ft_lstsize(l) == 0)
+		return (INT_MIN);
+	min = *((int *)l->content);
+	l = l->next;
+	while (l != NULL)
+	{
+		if (*((int *)l->content) < min)
+			min = *((int *)l->content);
+		l = l->next;
+	}
+	return (min);
 }

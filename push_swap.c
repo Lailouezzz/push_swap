@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 10:11:46 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/05/16 15:19:59 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/05/17 08:32:21 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int	main(int argc, char **argv)
 		return (error());
 	ps_sort(&ctx);
 	ft_lstclear(&ctx.a, free);
+	ft_lstclear(&ctx.b, free);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:25:57 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/05/16 15:19:32 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/05/17 08:31:08 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,28 @@
 
 void	ps_ra(t_ps_ctx *ctx)
 {
+	t_list	*l;
+
 	ft_putendl_fd("ra", STDOUT_FILENO);
 	if (ft_lstsize(ctx->a) <= 1)
 		return ;
 	ft_lstlast(ctx->a)->next = ctx->a;
-	ctx->a = ctx->a->next;
+	l = ctx->a->next;
+	ctx->a->next = NULL;
+	ctx->a = l;
 }
 
 void	ps_rb(t_ps_ctx *ctx)
 {
+	t_list	*l;
+
 	ft_putendl_fd("rb", STDOUT_FILENO);
 	if (ft_lstsize(ctx->b) <= 1)
 		return ;
 	ft_lstlast(ctx->b)->next = ctx->b;
-	ctx->b = ctx->b->next;
+	l = ctx->b->next;
+	ctx->b->next = NULL;
+	ctx->b = l;
 }
 
 void	ps_rr(t_ps_ctx *ctx)
