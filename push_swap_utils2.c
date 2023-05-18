@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/17 10:51:09 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/05/17 10:55:51 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:27:03 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,28 @@ int	ps_max(t_list *l)
 		l = l->next;
 	}
 	return (max);
+}
+
+int	ps_where_max(t_list *l)
+{
+	int		k;
+	int		maxidx;
+	t_list	*max;
+
+	maxidx = 0;
+	max = l;
+	k = 0;
+	while (l != NULL)
+	{
+		if (ps_lstcmp(l, max) > 0)
+		{
+			maxidx = k;
+			max = l;
+		}
+		++k;
+		l = l->next;
+	}
+	return (maxidx);
 }
 
 int	ps_where_lower(t_list *l, int nb)

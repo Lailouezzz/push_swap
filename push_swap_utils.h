@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 10:19:22 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/05/17 10:52:26 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:30:46 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	ft_atoip_error(const char **str, int *nb);
 
 /* Return : the index of the min of l */
 int	ps_where_min(t_list *l);
+/* Return : the index of the max of l */
+int	ps_where_max(t_list *l);
 
 int	ps_min(t_list *l);
 int	ps_max(t_list *l);

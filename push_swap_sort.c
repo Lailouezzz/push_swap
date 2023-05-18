@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:47:26 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/05/17 11:55:12 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:08:22 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,38 +60,42 @@ static void	ps_sort_pivot(t_ps_ctx *ctx, int pivot)
 	}
 }
 
+static void	ps_sort_pusha(t_ps_ctx *ctx, int idx)
+{
+	int	k;
+
+	k = 0;
+	if (ft_lstsize(ctx->b) - idx > idx)
+		while (k++ < idx)
+			ps_rb(ctx);
+	else if (idx != 0)
+	{
+		idx = ft_lstsize(ctx->b) - idx;
+		while (k++ < idx)
+			ps_rrb(ctx);
+	}
+	ps_pa(ctx);
+}
+
 static void	ps_sort_end(t_ps_ctx *ctx)
 {
 	int	minidx;
-	int	k;
 
 	if (ft_lstsize(ctx->b) <= 1)
 		return ;
 	while (ft_lstsize(ctx->b) != 0)
 	{
 		minidx = ps_where_min(ctx->b);
-		k = 0;
-		if (ft_lstsize(ctx->b) - minidx > minidx)
-			while (k++ < minidx)
-				ps_rb(ctx);
-		else if (minidx != 0)
-		{
-			minidx = ft_lstsize(ctx->b) - minidx;
-			while (k++ < minidx)
-				ps_rrb(ctx);
-		}
-		ps_pa(ctx);
+		ps_sort_pusha(ctx, minidx);
 	}
-	while (ft_lstsize(ctx->b) != 0)
-		ps_pa(ctx);
 }
 
 static void	ps_sort_quick(t_ps_ctx *ctx, int time)
 {
-	int	pivot;
-	int	k;
-	int	min;
-	int	max;
+	int		pivot;
+	int		k;
+	int		min;
+	int		max;
 
 	if (ft_lstsize(ctx->a) <= 1)
 		return ;
@@ -112,9 +116,9 @@ void	ps_sort(t_ps_ctx *ctx)
 	if (ft_lstsize(ctx->a) <= 10)
 		ps_sort_brute(ctx);
 	else if (ft_lstsize(ctx->a) < 100)
-		ps_sort_quick(ctx, 6);
+		ps_sort_quick(ctx, 5);
 	else if (ft_lstsize(ctx->a) < 250)
-		ps_sort_quick(ctx, 8);
+		ps_sort_quick(ctx, 6);
 	else
-		ps_sort_quick(ctx, 15);
+		ps_sort_quick(ctx, 13);
 }
