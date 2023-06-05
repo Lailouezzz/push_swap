@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker_issort_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 10:11:46 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/06/05 12:55:34 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/06/05 15:46:01 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/06/05 16:19:12 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "push_swap.h"
+#include "checker_bonus.h"
 
-static int	error(void)
+int	checker_issort(t_ps_ctx *ctx)
 {
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	return (EXIT_FAILURE);
-}
+	t_list	*l;
 
-int	main(int argc, char **argv)
-{
-	t_ps_ctx	ctx;
-
-	if (argc == 1)
-		return (EXIT_SUCCESS);
-	ctx = ps_init_ctx(argv + 1, argc - 1);
-	if (ctx.a == NULL)
-		return (error());
-	ps_sort(&ctx);
-	ft_lstclear(&ctx.a, free);
-	ft_lstclear(&ctx.b, free);
-	return (EXIT_SUCCESS);
+	l = ctx->a;
+	while (l->next != NULL)
+	{
+		if (*((int *)l->content) > *((int *)l->next->content))
+			return (0);
+		l = l->next;
+	}
+	return (1);
 }

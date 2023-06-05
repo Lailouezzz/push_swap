@@ -1,35 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   push_swap_sort_func.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 10:11:46 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/06/05 12:55:34 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/06/05 12:45:24 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/06/05 12:46:46 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "push_swap.h"
+#ifndef  PUSH_SWAP_SORT_FUNC_H
+# define PUSH_SWAP_SORT_FUNC_H
 
-static int	error(void)
-{
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	return (EXIT_FAILURE);
-}
+void	ps_sort_brute(t_ps_ctx *ctx);
+void	ps_sort_quick(t_ps_ctx *ctx, int time);
 
-int	main(int argc, char **argv)
-{
-	t_ps_ctx	ctx;
-
-	if (argc == 1)
-		return (EXIT_SUCCESS);
-	ctx = ps_init_ctx(argv + 1, argc - 1);
-	if (ctx.a == NULL)
-		return (error());
-	ps_sort(&ctx);
-	ft_lstclear(&ctx.a, free);
-	ft_lstclear(&ctx.b, free);
-	return (EXIT_SUCCESS);
-}
+#endif

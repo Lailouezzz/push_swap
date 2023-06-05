@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker_func3_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 10:11:46 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/06/05 12:55:34 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/05/16 13:39:28 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/06/05 14:11:51 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
+#include "checker_func_bonus.h"
 #include "push_swap.h"
 
-static int	error(void)
+void	ps_rrr(t_ps_ctx *ctx)
 {
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	return (EXIT_FAILURE);
-}
-
-int	main(int argc, char **argv)
-{
-	t_ps_ctx	ctx;
-
-	if (argc == 1)
-		return (EXIT_SUCCESS);
-	ctx = ps_init_ctx(argv + 1, argc - 1);
-	if (ctx.a == NULL)
-		return (error());
-	ps_sort(&ctx);
-	ft_lstclear(&ctx.a, free);
-	ft_lstclear(&ctx.b, free);
-	return (EXIT_SUCCESS);
+	ps_rra(ctx);
+	ps_rrb(ctx);
 }

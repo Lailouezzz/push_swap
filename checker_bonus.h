@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   checker_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/16 10:11:46 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/06/05 12:55:34 by ale-boud         ###   ########.fr       */
+/*   Created: 2023/06/05 12:56:18 by ale-boud          #+#    #+#             */
+/*   Updated: 2023/06/05 14:26:25 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "push_swap.h"
+#ifndef  CHECKER_BONUS_H
+# define CHECKER_BONUS_H
 
-static int	error(void)
-{
-	ft_putstr_fd("Error\n", STDERR_FILENO);
-	return (EXIT_FAILURE);
-}
+# include "push_swap.h"
 
-int	main(int argc, char **argv)
-{
-	t_ps_ctx	ctx;
+/* Return : 1 if all instructions is executed successfully
+			0 if error while reading in fd */
+int	checker_execute(int fd, t_ps_ctx *ctx);
 
-	if (argc == 1)
-		return (EXIT_SUCCESS);
-	ctx = ps_init_ctx(argv + 1, argc - 1);
-	if (ctx.a == NULL)
-		return (error());
-	ps_sort(&ctx);
-	ft_lstclear(&ctx.a, free);
-	ft_lstclear(&ctx.b, free);
-	return (EXIT_SUCCESS);
-}
+/* Return : 1 if stack A is sorted */
+int	checker_issort(t_ps_ctx *ctx);
+
+#endif

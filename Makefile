@@ -6,7 +6,7 @@
 #    By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 23:28:51 by ale-boud          #+#    #+#              #
-#    Updated: 2023/05/18 16:24:40 by ale-boud         ###   ########.fr        #
+#    Updated: 2023/06/05 15:48:21 by ale-boud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,13 +39,16 @@ LD := gcc
 # ---
 
 NAME := push_swap
+BONUS := checker
 LIBFT := libft.a
 
 SRCS := push_swap.c push_swap_utils1.c push_swap_ctx.c push_swap_func1.c \
 		push_swap_func2.c push_swap_func3.c push_swap_sort.c \
-		push_swap_utils2.c
+		push_swap_utils2.c push_swap_sort_func.c
 OBJS := $(SRCS:%.c=%.o)
-SRCS_BONUS := 
+SRCS_BONUS := push_swap_ctx.c push_swap_utils1.c checker_bonus.c \
+		checker_func1_bonus.c checker_func2_bonus.c checker_func3_bonus.c \
+		checker_execute_bonus.c checker_issort_bonus.c
 OBJS_BONUS := $(SRCS_BONUS:%.c=%.o)
 
 # ---
@@ -65,7 +68,7 @@ clean:
 # Clean everything
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(BONUS)
 	$(MAKE) fclean -C libft
 
 # Rebuild
@@ -74,7 +77,7 @@ re: fclean all
 
 # Bonus
 
-bonus: all
+bonus: all $(BONUS)
 	
 .PHONY: all clean fclean re bonus
 
@@ -89,6 +92,9 @@ $(LIBFT): libft/libft.a
 	cp libft/libft.a $(LIBFT)
 
 $(NAME): $(OBJS) $(LIBFT)
+	$(LD) -o $@ $^
+
+$(BONUS): $(OBJS_BONUS) $(LIBFT)
 	$(LD) -o $@ $^
 
 %.o: %.c

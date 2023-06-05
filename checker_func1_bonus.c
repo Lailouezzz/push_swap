@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_func1.c                                  :+:      :+:    :+:   */
+/*   checker_func1_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 12:49:24 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/06/05 14:09:01 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/06/05 14:09:13 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	ps_sa(t_ps_ctx *ctx)
 {
 	t_list	*l;
 
-	ft_putendl_fd("sa", STDOUT_FILENO);
 	if (ft_lstsize(ctx->a) <= 1)
 		return ;
 	l = ctx->a;
@@ -30,7 +29,6 @@ void	ps_sb(t_ps_ctx *ctx)
 {
 	t_list	*l;
 
-	ft_putendl_fd("sb", STDOUT_FILENO);
 	if (ft_lstsize(ctx->b) <= 1)
 		return ;
 	l = ctx->b;
@@ -41,7 +39,6 @@ void	ps_sb(t_ps_ctx *ctx)
 
 void	ps_ss(t_ps_ctx *ctx)
 {
-	ft_putendl_fd("ss", STDOUT_FILENO);
 	ps_sa(ctx);
 	ps_sb(ctx);
 }
@@ -50,7 +47,6 @@ void	ps_pa(t_ps_ctx *ctx)
 {
 	t_list	*elem;
 
-	ft_putendl_fd("pa", STDOUT_FILENO);
 	if (ft_lstsize(ctx->b) == 0)
 		return ;
 	elem = ctx->b;
@@ -62,7 +58,6 @@ void	ps_pb(t_ps_ctx *ctx)
 {
 	t_list	*elem;
 
-	ft_putendl_fd("pb", STDOUT_FILENO);
 	if (ft_lstsize(ctx->a) == 0)
 		return ;
 	elem = ctx->a;
