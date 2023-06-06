@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:56:18 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/06/05 14:26:25 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/06/06 13:31:00 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,5 @@
 /* Return : 1 if all instructions is executed successfully
 			0 if error while reading in fd */
 int	checker_execute(int fd, t_ps_ctx *ctx);
-
-/* Return : 1 if stack A is sorted */
-int	checker_issort(t_ps_ctx *ctx);
 
 #endif

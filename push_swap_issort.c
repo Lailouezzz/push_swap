@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_issort_bonus.c                             :+:      :+:    :+:   */
+/*   push_swap_issort.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 15:46:01 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/06/05 16:19:12 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/06/06 13:31:37 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker_bonus.h"
+#include "push_swap.h"
 
-int	checker_issort(t_ps_ctx *ctx)
+int	ps_issort(t_ps_ctx *ctx)
 {
 	t_list	*l;
 
@@ -23,5 +23,5 @@ int	checker_issort(t_ps_ctx *ctx)
 			return (0);
 		l = l->next;
 	}
-	return (1);
+	return (ft_lstsize(ctx->b) == 0);
 }

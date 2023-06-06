@@ -6,38 +6,12 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:47:26 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/06/05 16:18:29 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/06/06 16:56:12 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_func.h"
 #include "push_swap_utils.h"
-
-void	ps_sort_brute(t_ps_ctx *ctx)
-{
-	int	minidx;
-	int	k;
-
-	if (ft_lstsize(ctx->a) <= 1)
-		return ;
-	while (ft_lstsize(ctx->a) != 0)
-	{
-		minidx = ps_where_min(ctx->a);
-		k = 0;
-		if (ft_lstsize(ctx->a) - minidx > minidx)
-			while (k++ < minidx)
-				ps_ra(ctx);
-		else if (minidx != 0)
-		{
-			minidx = ft_lstsize(ctx->a) - minidx;
-			while (k++ < minidx)
-				ps_rra(ctx);
-		}
-		ps_pb(ctx);
-	}
-	while (ft_lstsize(ctx->b) != 0)
-		ps_pa(ctx);
-}
 
 static void	ps_sort_pivot(t_ps_ctx *ctx, int pivot)
 {

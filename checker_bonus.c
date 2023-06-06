@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 12:50:08 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/06/05 16:19:42 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/06/06 14:36:08 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 		return (error());
 	if (checker_execute(STDIN_FILENO, &ctx) == 0)
 		return (execute_error());
-	if (checker_issort(&ctx) == 1)
+	if (ps_issort(&ctx) == 1)
 		ft_putstr_fd("OK\n", STDOUT_FILENO);
 	else
 		ft_putstr_fd("KO\n", STDOUT_FILENO);
