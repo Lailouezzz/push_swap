@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 10:34:28 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/06/06 19:22:11 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:50:30 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ static int	ps_lstat(t_list *l, int idx)
 	return (*((int *)l->content));
 }
 
-static int	ps_init_nb_occ(t_list *l, int nb)
+static int	ps_init_nb_occ(t_list *l, int nb, int k)
 {
-	int	k;
 	int	nbocc;
 
-	k = 0;
 	nbocc = 0;
 	while (k < ft_lstsize(l))
 	{
@@ -44,7 +42,7 @@ static int	ps_init_dup(t_list *l)
 	k = 0;
 	while (k < ft_lstsize(l))
 	{
-		if (ps_init_nb_occ(l, ps_lstat(l, k)) >= 2)
+		if (ps_init_nb_occ(l, ps_lstat(l, k), k) >= 2)
 			return (0);
 		++k;
 	}

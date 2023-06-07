@@ -6,7 +6,7 @@
 /*   By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 15:21:16 by ale-boud          #+#    #+#             */
-/*   Updated: 2023/06/06 18:11:12 by ale-boud         ###   ########.fr       */
+/*   Updated: 2023/06/07 12:54:58 by ale-boud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,21 @@ static int	ps_sort_insert_index(t_ps_ctx *ctx)
 	return (idx);
 }
 
+static void	ps_sort_fast_insert(t_ps_ctx *ctx, int idx)
+{
+	if (idx <= 1)
+		ps_pa(ctx);
+	if (idx == 1)
+		ps_sa(ctx);
+}
+
 static void	ps_sort_insert_a(t_ps_ctx *ctx)
 {
 	int	idx;
 	int	k;
 
 	idx = ps_sort_insert_index(ctx);
-	if (idx <= 1)
-		ps_pa(ctx);
-	if (idx == 1)
-		ps_sa(ctx);
+	ps_sort_fast_insert(ctx, idx);
 	if (idx <= 1)
 		return ;
 	k = 0;

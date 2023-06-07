@@ -6,7 +6,7 @@
 #    By: ale-boud <ale-boud@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/06 23:28:51 by ale-boud          #+#    #+#              #
-#    Updated: 2023/06/06 15:28:48 by ale-boud         ###   ########.fr        #
+#    Updated: 2023/06/07 12:56:35 by ale-boud         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ CC := gcc
 CWARN := all extra error
 CWARN := $(CWARN:%=-W%)
 
-CFLAGS := -c -g $(CWARN) -Ilibft
+CFLAGS := -c $(CWARN) -Ilibft
 
 # Linker
 
